@@ -1,0 +1,11 @@
+The next line will be an empty line
+
+This line will have three spaces at the end   
+Two  spaces - Three   spaces - Four    spaces
+//This line will be removed
+/*
+These lines
+Will be
+Removed
+*/
+This file has 254 characters in total before passing through the filters
