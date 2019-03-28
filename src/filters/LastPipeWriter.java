@@ -15,7 +15,8 @@ public class LastPipeWriter extends Pipe {
         this.outWriter = outputWriter;
     }
 
-    public void runWriter() {
+    public void run() {
+        System.out.println("LastPipe");
         try {
             inputReader.close();
             outWriter.flush();

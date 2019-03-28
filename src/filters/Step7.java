@@ -12,9 +12,7 @@ public class Step7 extends PipeFilter {
         super(nextPipe);
     }
 
-    public void filter(BufferedReader inputReader, Writer outputWriter) throws IOException {
+    public void filter(Reader inputReader, Writer outputWriter) throws IOException {
         System.out.println("Step 7");
-        outputWriter.flush();
-        System.out.println("Acabo step7");
     }
 }

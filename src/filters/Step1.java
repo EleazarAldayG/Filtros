@@ -10,9 +10,8 @@ public class Step1 extends PipeFilter {
         super(nextPipe);
     }
 
-    public void filter(BufferedReader inputReader, Writer outputWriter) throws IOException {
+    public void filter(Reader inputReader, Writer outputWriter) throws IOException {
         System.out.println("Step 1");
-        System.out.println(inputReader.readLine());
     }
 
 }

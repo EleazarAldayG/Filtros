@@ -13,7 +13,7 @@ public abstract class PipeFilter extends Pipe{
         super(nextPipe);
     }
     
-    abstract public void filter(BufferedReader inReader, Writer outputWriter) throws IOException;
+    abstract public void filter(Reader inReader, Writer outputWriter) throws IOException;
     
     public void run() {
       try { filter(inReader, outputWriter); } 
