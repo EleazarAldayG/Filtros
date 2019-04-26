@@ -18,7 +18,7 @@ public class Pipe extends Thread {
         super();
     }
 
-    public Pipe(Pipe nextPipe) throws IOException{
+    public Pipe(Pipe nextPipe) throws IOException {
         this.nextPipe = nextPipe;
         outputWriter = new PipedWriter();
         outputWriter.connect(nextPipe.getReader());
@@ -31,15 +31,36 @@ public class Pipe extends Thread {
         this.start();
     }
 
-    public void joinPipe() throws InterruptedException { 
-      if (nextPipe != null){
-          nextPipe.joinPipe();
-      } 
-      this.join(); 
+    public void resumePipe() {
+        if (nextPipe != null) {
+            nextPipe.resumePipe();
+        }
+        this.resume();
     }
-    
-    public PipedReader getReader(){
-        if(inputReader == null){
+
+    public void stopPipe() {
+        this.stop();
+        if (nextPipe != null) {
+            nextPipe.stopPipe();
+        }
+    }
+
+    public void suspendPipe() {
+        this.suspend();
+        if (nextPipe != null) {
+            nextPipe.suspendPipe();
+        }
+    }
+
+    public void joinPipe() throws InterruptedException {
+        if (nextPipe != null) {
+            nextPipe.joinPipe();
+        }
+        this.join();
+    }
+
+    public PipedReader getReader() {
+        if (inputReader == null) {
             inputReader = new PipedReader();
         }
         return inputReader;

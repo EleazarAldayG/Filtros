@@ -17,16 +17,21 @@ public class LastPipeWriter extends Pipe {
     }
 
     public void run() {
-        
         try {
             char[] buffer = new char[1024];
             int chars_read;
             while ((chars_read = inputReader.read(buffer)) != -1) {
                 outputWriter.write(buffer, 0, chars_read);
             }
+        } catch (IOException e) {
+        } finally {
+            try {
+                inputReader.close();
+                outputWriter.flush();
+            } catch (IOException e) {
+            }
         }
-        catch (IOException e) {}
-        finally { try {inputReader.close(); outputWriter.flush(); } catch (IOException e) {} }
+
     }
 
 }
