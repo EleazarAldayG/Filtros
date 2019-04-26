@@ -8,15 +8,14 @@ import java.io.*;
  */
 public abstract class PipeFilter extends Pipe{
     
-    BufferedReader inReader;
     public PipeFilter(Pipe nextPipe) throws IOException{
         super(nextPipe);
     }
     
-    abstract public void filter(Reader inReader, Writer outputWriter) throws IOException;
+    abstract public void filter(Reader inputReader, Writer outputWriter) throws IOException;
     
     public void run() {
-      try { filter(inReader, outputWriter); } 
+      try { filter(inputReader, outputWriter); } 
       catch (IOException e) {}
       finally { try { inputReader.close(); outputWriter.close(); } catch (IOException e) {} }
     }

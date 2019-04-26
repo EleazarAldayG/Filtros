@@ -8,38 +8,29 @@ import java.util.ArrayList;
  * @author eleaz
  */
 public class PipeSource extends Pipe {
-
-    public Reader inReader;
-
+    
+    public Reader inputReader;
+    
     public PipeSource(Pipe nextPipe, Reader inputReader) throws IOException {
         super(nextPipe);
-        this.inReader = inputReader;
+        this.inputReader = inputReader;
     }
-
+     
     public void run() {
-        System.out.println("Source");
-        ArrayList<String> lines = new ArrayList();
-        BufferedReader lineReader = new BufferedReader(inReader);
-        try {
-            String line = lineReader.readLine();
-            while (line != null) {
-                System.out.println(line);
-                // read next line
-                line = lineReader.readLine();
-            }
-        } catch (IOException e) {
-        } finally {
-            try {
-                inReader.close();
-                outputWriter.close();
-            } catch (IOException e) {
-            }
-        }
+      try { 
+        char[] buffer = new char[1024];
+        int charRead;
+        while((charRead = inputReader.read(buffer)) != -1) 
+          outputWriter.write(buffer, 0, charRead);
+      } 
+      catch (IOException e) {}
+      finally { try { inputReader.close(); outputWriter.close(); } catch (IOException e) {} }
     }
 
+    
     @Override
     public PipedReader getReader() {
         throw new Error("Can't find a source");
     }
-
+    
 }

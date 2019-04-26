@@ -36,7 +36,6 @@ public class Pipe extends Thread {
           nextPipe.joinPipe();
       } 
       this.join(); 
-        System.out.println("Joined");
     }
     
     public PipedReader getReader(){

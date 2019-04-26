@@ -18,7 +18,12 @@ public class FiltersProgram {
         Reader inputReader = new BufferedReader(new FileReader(f));
         LastPipeWriter lastPipe = new LastPipeWriter(outputWriter);
         PipeFilter step7Filter = new Step7(lastPipe);
-        PipeFilter step1Filter = new Step1(step7Filter);
+        PipeFilter step6Filter = new Step6(step7Filter);
+        PipeFilter step5Filter = new Step5(step6Filter);
+        PipeFilter step4Filter = new Step4(step5Filter);
+        PipeFilter step3Filter = new Step3(step4Filter);
+        PipeFilter step2Filter = new Step2(step3Filter);
+        PipeFilter step1Filter = new Step1(step2Filter);
         PipeSource source = new PipeSource(step1Filter, inputReader);
         source.startThisPipe();
         try {
