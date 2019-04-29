@@ -14,7 +14,7 @@ public class Step4 extends PipeFilter {
         int chars, index = 0;
         while ((chars = inputReader.read(buffer)) != -1) {
             for (int i = 0; i < chars; i++) {
-                if (buffer[i] == 32 && buffer[i - 1] == 32) {
+                if ((buffer[i] == 32  || buffer[i] == 9) && (buffer[i - 1] == 32  || buffer[i - 1] == 9)) {
                     buffer2[i - 1 - index] = buffer[i];
                     index++;
                 }

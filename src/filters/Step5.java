@@ -15,7 +15,7 @@ public class Step5 extends PipeFilter {
         int chars;
         while ((chars = inputReader.read(buffer)) != -1) {
             for (int i = 0; i < chars; i++) {
-                if (buffer[i] == 32) {
+                if (buffer[i] == 32  || buffer[i] == 9) {
                     continue;
                 }
                 buffer2[i] = buffer[i];

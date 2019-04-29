@@ -2,9 +2,6 @@ package filters;
 
 import java.io.*;
 import java.net.URL;
-import java.nio.file.Files;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  *
@@ -15,7 +12,7 @@ public class FiltersProgram {
     public static void main(String[] args) throws IOException {
         URL path = Step1.class.getResource("Source.txt");
         File f = new File(path.getFile());
-        Writer outputWriter = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(f)));
+        Writer outputWriter = new BufferedWriter(new OutputStreamWriter(System.out));
         Reader inputReader = new BufferedReader(new FileReader(f));
         LastPipeWriter lastPipe = new LastPipeWriter(outputWriter);
         PipeFilter step7Filter = new Step7(lastPipe);
@@ -31,5 +28,4 @@ public class FiltersProgram {
             source.joinPipe();
         } catch (InterruptedException e) {}
     }
-
 }

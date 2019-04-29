@@ -18,10 +18,11 @@ public class LastPipeWriter extends Pipe {
 
     public void run() {
         try {
-            char[] buffer = new char[1024];
-            int chars_read;
-            while ((chars_read = inputReader.read(buffer)) != -1) {
-                outputWriter.write(buffer, 0, chars_read);
+            char[] buffer = new char[300];
+            int chars;
+            while ((chars = inputReader.read(buffer)) != -1) {
+                System.out.println("Result:");
+                outputWriter.write(buffer, 0, chars);
             }
         } catch (IOException e) {
         } finally {

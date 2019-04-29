@@ -21,7 +21,7 @@ public class Step3 extends PipeFilter {
                         index++;
                     }
                     //This for removes whitespaces at the end of a line
-                    for (int x = i; buffer[x - 1] == 32; x--) {
+                    for (int x = i; buffer[x - 1] == 32 || buffer[x - 1] == 9 ; x--) {
                         buffer2[x - 1] = buffer2[x];
                         index++;
                     }
